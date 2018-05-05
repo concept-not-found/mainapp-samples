@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/concept-not-found/mainapp/master/logo/mono-white-outlined.svg" width="486" height="142" /> samples
+# <img src="https://github.com/concept-not-found/mainapp/raw/master/logo/mono-white-outlined.svg?sanitize=true" width="486" height="142" /> samples
 
 ## [Inline component](https://github.com/concept-not-found/mainapp-samples/tree/master/inline-component)
 The whole app is a single component.
