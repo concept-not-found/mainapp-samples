@@ -1,22 +1,15 @@
-import {h, Component, App} from 'mainapp'
+import {h, App} from 'mainapp'
 
 import RemoteCounter from './RemoteCounter'
 import TotallyRealApiService from './TotallyRealApiService'
 
-async function init () {
-  const totallyRealApiService = TotallyRealApiService()
+const totallyRealApiService = TotallyRealApiService()
 
-  const Main = Component({
-    remoteCounter: RemoteCounter,
-    view ({remoteCounter}) {
-      return <remoteCounter.view />
-    }
-  })
+const main = App({
+  remoteCounter: RemoteCounter(totallyRealApiService),
+  view ({remoteCounter}) {
+    return <remoteCounter.view />
+  }
+}, document.getElementById('mainapp-entry'))
 
-  const main = App(Main, document.getElementById('mainapp-entry'))
-
-  await main.remoteCounter.inject(totallyRealApiService)
-  main.remoteCounter.loadCount()
-}
-
-init()
+main.remoteCounter.loadCount()

@@ -1,12 +1,10 @@
-import {h, Component, App} from 'mainapp'
+import {h, App} from 'mainapp'
 
 import Counter from './Counter'
 
-const Main = Component({
+App({
   counter: Counter,
   view ({counter}) {
     return <counter.view />
   }
-})
-
-App(Main, document.getElementById('mainapp-entry'))
+}, document.getElementById('mainapp-entry'))

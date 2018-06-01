@@ -1,6 +1,6 @@
-import {h, Component, App} from 'mainapp'
+import {h, App} from 'mainapp'
 
-const Counter = Component({
+const Counter = {
   count: 0,
   down ({count}, value) {
     return {
@@ -19,9 +19,9 @@ const Counter = Component({
       <button onclick={() => up(1)}>+</button>
     </div>
   }
-})
+}
 
-const Main = Component({
+App({
   first: Counter,
   second: Counter,
   view ({first, second}) {
@@ -31,6 +31,4 @@ const Main = Component({
       <p>Sum: {first.count + second.count}</p>
     </div>
   }
-})
-
-App(Main, document.getElementById('mainapp-entry'))
+}, document.getElementById('mainapp-entry'))

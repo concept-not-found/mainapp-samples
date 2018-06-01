@@ -1,6 +1,6 @@
-import {h, Component, App} from 'mainapp'
+import {h, App} from 'mainapp'
 
-const Counter = Component({
+const Counter = {
   count: 0,
   down ({count}, value) {
     return {
@@ -19,40 +19,43 @@ const Counter = Component({
       <button onclick={() => up(1)}>+</button>
     </div>
   }
-})
+}
 
-const Main = Component({
+const Main = {
   nextCounterId: 0,
-  counters: [],
+  counters: {},
   addCounter ({nextCounterId, counters}) {
     const id = nextCounterId
     return {
       nextCounterId: id + 1,
-      counters: [
-        ...counters,
-        Counter.extend({
-          id
-        })
-      ]
+      counters: {
+        [id]: Counter
+      }
     }
   },
-  removeCounter ({counters}, counterId) {
+  removeCounter ({counters}, id) {
     return {
-      counters: counters.filter(({id}) => id !== counterId)
+      counters: {
+        [id]: undefined
+      }
     }
   },
   view ({addCounter, removeCounter, counters}) {
+    console.log({counters})
     return <div>
       <button onclick={addCounter}>Add counter</button>
       <div>
-        {counters.map((counter) => <div>
-          <counter.view key={counter.id} name={`counter #${counter.id}`} />
-          <button style="margin-bottom: 20px;" onclick={() => removeCounter(counter.id)}>Remove counter #{counter.id}</button>
-        </div>)}
+        {Object.keys(counters).map((id) => {
+          const counter = counters[id]
+          return <div>
+            <counter.view key={id} name={`counter #${id}`} />
+            <button style="margin-bottom: 20px;" onclick={() => removeCounter(id)}>Remove counter #{id}</button>
+          </div>
+        })}
       </div>
-      <p>Sum: {counters.reduce((sum, {count}) => sum + count, 0)}</p>
+      <p>Sum: {Object.keys(counters).reduce((sum, id) => sum + counters[id].count, 0)}</p>
     </div>
   }
-})
+}
 
 App(Main, document.getElementById('mainapp-entry'))

@@ -1,6 +1,6 @@
-import {h, Component, App} from 'mainapp'
+import {h, App} from 'mainapp'
 
-const Main = Component({
+App({
   async loadCounter () {
     const {default: Counter} = await import('./Counter')
     return {
@@ -13,6 +13,4 @@ const Main = Component({
       {counter && <counter.view />}
     </div>
   }
-})
-
-App(Main, document.getElementById('mainapp-entry'))
+}, document.getElementById('mainapp-entry'))

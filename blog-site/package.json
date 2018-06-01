@@ -1,5 +1,5 @@
 {
-  "name": "mainapp-sample-imported-component",
+  "name": "mainapp-sample-blog-site",
   "private": true,
   "description": "",
   "scripts": {
@@ -9,7 +9,6 @@
     "test": "jest"
   },
   "author": "Ronald Chen",
-  "license": "ISC",
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "mainapp": "3.0.0"

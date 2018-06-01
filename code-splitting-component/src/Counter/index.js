@@ -1,6 +1,6 @@
-import {h, Component} from 'mainapp'
+import {h} from 'mainapp'
 
-export default Component({
+export default {
   count: 0,
   down ({count}, value) {
     return {
@@ -19,4 +19,4 @@ export default Component({
       <button onclick={() => up(1)}>+</button>
     </div>
   }
-})
+}

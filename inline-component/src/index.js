@@ -1,6 +1,6 @@
-import {h, Component, App} from 'mainapp'
+import {h, App} from 'mainapp'
 
-const Main = Component({
+App({
   count: 0,
   down ({count}, value) {
     return {
@@ -19,6 +19,4 @@ const Main = Component({
       <button onclick={() => up(1)}>+</button>
     </div>
   }
-})
-
-App(Main, document.getElementById('mainapp-entry'))
+}, document.getElementById('mainapp-entry'))
