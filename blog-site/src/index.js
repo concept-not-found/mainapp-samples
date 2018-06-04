@@ -108,39 +108,39 @@ const Post = {
 
 App({
   page: 'home',
-  header: Header,
-  home: Home,
-  newPost: NewPost,
-  post: Post,
+  Header,
+  Home,
+  NewPost,
+  Post,
   openHome() {
     return {
       page: 'home'
     }
   },
-  async createPost({home, openPost}, title, body) {
+  async createPost({Home, openPost}, title, body) {
     const postId = await fakeApi.createPost(title, body)
-    await home.addFeaturedPost(postId, title)
+    await Home.addFeaturedPost(postId, title)
     return openPost(postId)
   },
-  async openNewPost({newPost}) {
-    await newPost.reset()
+  async openNewPost({NewPost}) {
+    await NewPost.reset()
     return {
       page: 'new post'
     }
   },
-  async openPost({post}, postId) {
+  async openPost({Post}, postId) {
     const {title, body} = await fakeApi.getPost(postId)
-    await post.loadPost(title, body)
+    await Post.loadPost(title, body)
     return {
       page: 'post'
     }
   },
-  view ({page, header, home, newPost, post}) {
+  view ({page, Header, Home, NewPost, Post}) {
     return <div>
-      <header.view />
-      {page === 'home' && <home.view />}
-      {page === 'new post' && <newPost.view />}
-      {page === 'post' && <post.view />}
+      <Header />
+      {page === 'home' && <Home />}
+      {page === 'new post' && <NewPost />}
+      {page === 'post' && <Post />}
     </div>
   }
 }, document.getElementById('mainapp-entry'))

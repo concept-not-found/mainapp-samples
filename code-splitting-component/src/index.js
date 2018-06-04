@@ -4,13 +4,13 @@ App({
   async loadCounter () {
     const {default: Counter} = await import('./Counter')
     return {
-      counter: Counter
+      Counter
     }
   },
-  view ({loadCounter, counter}) {
+  view ({loadCounter, Counter}) {
     return <div>
-      <button onclick={loadCounter} disabled={counter}>Load counter</button>
-      {counter && <counter.view />}
+      <button onclick={loadCounter} disabled={Counter}>Load counter</button>
+      {Counter && <Counter />}
     </div>
   }
 }, document.getElementById('mainapp-entry'))

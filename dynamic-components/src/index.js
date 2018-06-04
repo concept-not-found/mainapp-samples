@@ -41,14 +41,13 @@ const Main = {
     }
   },
   view ({addCounter, removeCounter, counters}) {
-    console.log({counters})
     return <div>
       <button onclick={addCounter}>Add counter</button>
       <div>
         {Object.keys(counters).map((id) => {
-          const counter = counters[id]
+          const Counter = counters[id]
           return <div>
-            <counter.view key={id} name={`counter #${id}`} />
+            <Counter key={id} name={`counter #${id}`} />
             <button style="margin-bottom: 20px;" onclick={() => removeCounter(id)}>Remove counter #{id}</button>
           </div>
         })}

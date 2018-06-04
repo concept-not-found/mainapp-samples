@@ -6,10 +6,10 @@ import TotallyRealApiService from './TotallyRealApiService'
 const totallyRealApiService = TotallyRealApiService()
 
 const main = App({
-  remoteCounter: RemoteCounter(totallyRealApiService),
-  view ({remoteCounter}) {
-    return <remoteCounter.view />
+  RemoteCounter: RemoteCounter(totallyRealApiService),
+  view ({RemoteCounter}) {
+    return <RemoteCounter />
   }
 }, document.getElementById('mainapp-entry'))
 
-main.remoteCounter.loadCount()
+main.RemoteCounter.loadCount()

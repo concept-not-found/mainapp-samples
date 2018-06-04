@@ -22,13 +22,13 @@ const Counter = {
 }
 
 App({
-  first: Counter,
-  second: Counter,
-  view ({first, second}) {
+  First: Counter,
+  Second: Counter,
+  view ({First, Second}) {
     return <div>
-      <first.view name="first" />
-      <second.view name="second" />
-      <p>Sum: {first.count + second.count}</p>
+      <First name="first" />
+      <Second name="second" />
+      <p>Sum: {First.count + Second.count}</p>
     </div>
   }
 }, document.getElementById('mainapp-entry'))
